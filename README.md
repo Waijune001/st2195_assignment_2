@@ -1,32 +1,89 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2822
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+# ST2195 — Practice Assignment 02
 
-\f0\fs24 \cf0 # st2195_assignment_2\
-\
-This repository contains solutions for **Practice Assignment 02 (ST2195)**.\
-\
-### Contents\
-- `r_csv/`: R script that scrapes an example CSV-like table from the Wikipedia page **\'93Delimiter-separated values\'94** and saves it as `dsv_example.csv`.\
-- `python_csv/`: Python script that does the same scraping using Python.\
-\
-### How to use\
-1. Run the R script in the `r_csv/` folder (requires the `rvest` library):\
-   ```bash\
-   Rscript r_csv/scrape_dsv.R\
-   ```\
-\
-2. Run the Python script in the `python_csv/` folder (requires `requests`, `beautifulsoup4`, and `pandas`):\
-   ```bash\
-   python3 python_csv/scrape_dsv.py\
-   ```\
-\
-Each script downloads a table from Wikipedia and saves it as `dsv_example.csv`.\
-\
-### Requirements\
-- R (with the `rvest` package)\
-- Python 3 (with `requests`, `beautifulsoup4`, and `pandas`)\
-}
+This repository contains my solutions for **Practice Assignment 02** of ST2195.  
+The task was to scrape a table from the Wikipedia page  
+**[Delimiter-separated values](https://en.wikipedia.org/wiki/Delimiter-separated_values)**  
+using both **R** and **Python**, and save the results as CSV files.
+
+---
+
+## 📂 Repository Structure
+
+```
+st2195_assignment_2/
+├─ README.md
+├─ r_csv/
+│  ├─ scrape_dsv.R
+│  └─ dsv_example.csv
+└─ python_csv/
+   ├─ scrape_dsv.py
+   └─ dsv_example.csv
+```
+
+---
+
+## 🧮 Part 1: R Script
+
+**File:** `r_csv/scrape_dsv.R`
+
+**Description:**  
+Uses the `rvest` library to:
+1. Read the Wikipedia page HTML.
+2. Extract the first table with more than one column.
+3. Save it as `r_csv/dsv_example.csv`.
+
+**Run command (from project root):**
+```bash
+Rscript r_csv/scrape_dsv.R
+```
+
+**Required package:**
+```r
+install.packages("rvest")
+```
+
+---
+
+## 🐍 Part 2: Python Script
+
+**File:** `python_csv/scrape_dsv.py`
+
+**Description:**  
+Uses `requests`, `BeautifulSoup`, and `pandas` to:
+1. Download the same Wikipedia page.
+2. Parse and extract the first valid HTML table.
+3. Save it as `python_csv/dsv_example.csv`.
+
+**Run command (from project root):**
+```bash
+python3 python_csv/scrape_dsv.py
+```
+
+**Required packages:**
+```bash
+pip install requests beautifulsoup4 pandas
+```
+
+---
+
+## 📊 Output Example
+
+Both scripts output a CSV file containing a table similar to:
+
+| Delimiter-separated values | Delimiter-separated values.1 |
+|-----------------------------|-------------------------------|
+| Uniform Type Identifier (UTI) | public.delimited-values-text[1] |
+
+---
+
+## 🧠 Notes
+
+- Both R and Python versions automatically create their respective folders (`r_csv/` and `python_csv/`) if they don’t exist.  
+- The Python script includes a browser-like **User-Agent header** to avoid a `403 Forbidden` error from Wikipedia.  
+- Both scripts print a preview of the scraped table to confirm successful scraping.
+
+---
+
+## ✨ Author
+**Chek Wai June**  
+ST2195 Practice Assignment 02  
